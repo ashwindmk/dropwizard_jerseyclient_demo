@@ -1,0 +1,26 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 8081
+
+jerseyClient:
+  timeout: 90 seconds
+  connectionTimeout: 170 seconds
+  connectionRequestTimeout: 179 seconds
+  timeToLive: 179 seconds
+  cookiesEnabled: false
+  maxConnections: 256
+  maxConnectionsPerRoute: 128
+  keepAlive: 179 seconds
+  validateAfterInactivityPeriod: 1 seconds
+  retries: 3
+  minThreads: 32
+  maxThreads: 128
+  workQueueSize: 512
+  userAgent: jersey-client-demo (Apache Default HttpClient)
+  gzipEnabled: true
+  gzipEnabledForRequests: false
+  chunkedEncodingEnabled: false
