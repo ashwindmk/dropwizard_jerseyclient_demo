@@ -5,9 +5,11 @@ import com.ashwin.api.resource.PingResource;
 import com.codahale.metrics.InstrumentedExecutorService;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.httpclient.HttpClientMetricNameStrategies;
+
 import io.dropwizard.client.JerseyClientBuilder;
 import io.dropwizard.setup.Environment;
 import org.glassfish.hk2.api.Factory;
+import org.glassfish.jersey.client.ClientProperties;
 
 import javax.inject.Inject;
 import javax.ws.rs.client.Client;
@@ -46,6 +48,7 @@ public class JerseyClientFactory implements Factory<Client> {
                         .using(service)
                         .using(config.getJerseyClient())
                         .using(HttpClientMetricNameStrategies.HOST_AND_METHOD)
+                        .withProperty(ClientProperties.FOLLOW_REDIRECTS, Boolean.FALSE)  // Handle redirects yourself
                         .build("jersey_client_demo");
 
         return client;
